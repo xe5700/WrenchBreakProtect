@@ -18,13 +18,28 @@ public class Main extends JavaPlugin {
 	public void LoadWrenches(){
 		InputStream WrenchesR=this.getClass().getResourceAsStream("/Wrenches.txt");
 		BufferedReader WrenchesF=new BufferedReader(new InputStreamReader(WrenchesR,Charset.forName("utf-8")));
-		Object[] ArrayWrenchesF=WrenchesF.lines().toArray();
-		int Count=(int)(ArrayWrenchesF.length);
+		
+		int Count=0;
 		//System.out.println(Count);
-		Wrenches=new String[Count];
-			for(int i=0;i<Count;i++){
-				Wrenches[i]=ArrayWrenchesF[i].toString();
+		String Wrenches2="";
+		try {
+			Wrenches2 = WrenchesF.readLine();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		};
+		//Wrenches=new String[Count];
+		try {
+			while(true){
+				String WRF = WrenchesF.readLine();
+				Wrenches2=Wrenches2+(char)(233)+WRF;
+				if(WRF==null)break;
 			}
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		Wrenches=Wrenches2.split(new String(((char)(233))+""));
 		try {
 			WrenchesF.close();
 			WrenchesR.close();
