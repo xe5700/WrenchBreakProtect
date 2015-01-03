@@ -20,7 +20,7 @@ public class Event implements Listener {
 					String S=String.valueOf(event.getPlayer().getItemInHand().getData().getData());
 					String itemname=I+":"+S;
 					if(main.checkWrench(itemname)){
-						event.getPlayer().sendMessage("You can't do this");
+						//event.getPlayer().sendMessage("You can't do this");
 						event.setCancelled(true);
 					}
 				}
